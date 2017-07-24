@@ -21,8 +21,8 @@
 				private String issuedDate;//发布日期
 				private String zwpp;//中文品牌-->
 				<div class="mui-table-view-cell" style="width: 100%;padding-left: 25px;">
-					车辆型号：<input class="mui-col-sm-3" /><span style="padding-left: 5px;">批次：</span><input class="mui-col-sm-3" />
-					<button type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-search">
+					车辆型号：<input id="qmodel" class="mui-col-sm-3" /><span style="padding-left: 5px;">批次：</span><input id="qgroup" class="mui-col-sm-3" />
+					<button id="qbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-search">
 		                                        查询
 		        	</button>
 				</div>
@@ -82,7 +82,6 @@
 					}
 				}
 			});
-
 			/**
 			 * 下拉刷新具体业务实现
 			 */
@@ -177,6 +176,11 @@
 				}
 				return fragment;
 			};
+			document.getElementById("qbtn").addEventListener('click',function(){
+				console.log("333");
+			});
+			
+			
 		</script>
 	</body>
 
