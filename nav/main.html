@@ -1,0 +1,115 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+
+		<header class="mui-bar mui-bar-nav" style="background: red;">
+			<h1 class="mui-title" style="color: white;">标题待改</h1>
+		</header>
+
+		<div class="mui-content">
+			<button id="one">公告数据-参数</button>
+			<button id="beian">公告数据-备案</button>
+			<button id="two">COC信息</button>
+			<button id="three">油耗信息</button>
+			<button id="four">环保信息-参数</button>
+			<button id="five">环保信息-附表</button>
+		</div>
+
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				plus.screen.lockOrientation("landscape-primary");
+				var self = plus.webview.currentWebview();
+				var dl = plus.webview.create('../login/login.html', 'login', {
+					top: '0px',
+					bottom: '0px',
+					scrollIndicator: 'none'
+				});
+				self.append(dl);
+
+			});
+			document.getElementById("one").addEventListener('tap', function() {
+				mui.openWindow({
+					id: 'confsplit-main.html',
+					url: '../confsplit/confsplit-main.html',
+					styles: {
+						popGesture: 'close'
+					},
+					show: {
+						aniShow: 'slide-in-right'
+					}
+				});
+			});
+			document.getElementById("beian").addEventListener('tap', function() {
+				mui.openWindow({
+					id: 'confbeian-main.html',
+					url: '../beian/confbeian-main.html',
+					styles: {
+						popGesture: 'close'
+					},
+					show: {
+						aniShow: 'slide-in-right'
+					}
+				});
+			});
+			document.getElementById("two").addEventListener('tap', function() {
+				mui.openWindow({
+					id: 'coc-main.html',
+					url: '../coc/coc-main.html',
+					styles: {
+						popGesture: 'close'
+					},
+					show: {
+						aniShow: 'slide-in-right'
+					}
+				});
+			});
+			document.getElementById("three").addEventListener('tap', function() {
+				mui.openWindow({
+					id: 'qtrip-main.html',
+					url: '../qtrip/qtrip-main.html',
+					styles: {
+						popGesture: 'close'
+					},
+					show: {
+						aniShow: 'slide-in-right'
+					}
+				});
+			});
+			document.getElementById("four").addEventListener('tap', function() {
+				mui.openWindow({
+					id: 'env-arglist-main.html',
+					url: '../environmental/env-arglist-main.html',
+					styles: {
+						popGesture: 'close'
+					},
+					show: {
+						aniShow: 'slide-in-right'
+					}
+				});
+			});
+			document.getElementById("five").addEventListener('tap', function() {
+				mui.openWindow({
+					id: 'env-attachlist-main.html',
+					url: '../environmental/env-attachlist-main.html',
+					styles: {
+						popGesture: 'close'
+					},
+					show: {
+						aniShow: 'slide-in-right'
+					}
+				});
+			});
+		</script>
+	</body>
+
+</html>
