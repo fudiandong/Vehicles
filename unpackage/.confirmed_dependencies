@@ -41,9 +41,12 @@
 		"resources": [
 			"js/mui.min.js",
 			"css/mui.min.css",
-			"css/app.css"
+			"css/app.css",
+			"compare/yz-mp.html"
 		],
-		"refer": []
+		"refer": [
+			"compare/yz-mp.html"
+		]
 	},
 	"login/login.html": {
 		"resources": [
@@ -119,7 +122,8 @@
 	"coc/coc-sub.html": {
 		"resources": [
 			"js/mui.min.js",
-			"css/mui.min.css"
+			"css/mui.min.css",
+			"js/mui.pullToRefresh.js"
 		],
 		"refer": [
 			"coc/coc-args-main.html"
@@ -168,7 +172,9 @@
 	"qtrip/qtrip-sub.html": {
 		"resources": [
 			"js/mui.min.js",
-			"css/mui.min.css"
+			"css/mui.min.css",
+			"js/mui.pullToRefresh.js",
+			"fonts/mui.ttf"
 		],
 		"refer": [
 			"qtrip/qtrip-args-main.html"
@@ -211,7 +217,8 @@
 		"resources": [
 			"fonts/mui.ttf",
 			"css/mui.min.css",
-			"environmental/env-arglist-sub.html"
+			"environmental/env-arglist-sub.html",
+			"js/mui.min.js"
 		],
 		"refer": [
 			"environmental/env-arglist-sub.html"
@@ -226,6 +233,17 @@
 		],
 		"refer": [
 			"environmental/args-attach.html"
+		]
+	},
+	"compare/yz-mp.html": {
+		"resources": [
+			"js/mui.zoom.js",
+			"css/app.css",
+			"css/preview_image.css",
+			"images/1.jpg",
+			"css/mui.min.css",
+			"js/mui.previewimage.js",
+			"js/mui.js"
 		]
 	}
 }
