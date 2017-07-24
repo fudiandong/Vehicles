@@ -6,16 +6,152 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
+		<style type="text/css">
+			#slider img {
+				height: 388px;
+			}
+			
+			.z_home_li {
+				text-align: center;
+				margin-bottom: 20px;
+			}
+			
+			.z_home_li>a img {
+				width: 60px !important;
+			}
+		</style>
 	</head>
 
 	<body>
-		
-		<div class="mui-content">
-		    首页门户
+
+		<div class="mui-content" style="background-color:#fff;">
+			<div id="slider" class="mui-slider">
+				<div class="mui-slider-group mui-slider-loop">
+					<!-- 额外增加的一个节点(循环轮播：第一个节点是最后一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../images/3.jpg">
+						</a>
+					</div>
+					<!-- 第一张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/1.jpg">
+						</a>
+					</div>
+					<!-- 第二张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/2.jpg">
+						</a>
+					</div>
+					<!-- 第三张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/1.jpg">
+						</a>
+					</div>
+					<!-- 第四张 -->
+					<div class="mui-slider-item">
+						<a href="#">
+							<img src="../images/3.jpg">
+						</a>
+					</div>
+
+					<!-- 额外增加的一个节点(循环轮播：最后一个节点是第一张轮播) -->
+					<div class="mui-slider-item mui-slider-item-duplicate">
+						<a href="#">
+							<img src="../images/1.jpg">
+						</a>
+					</div>
+				</div>
+				<div class="mui-slider-indicator">
+					<div class="mui-indicator mui-active"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+					<div class="mui-indicator"></div>
+				</div>
+			</div>
+
+			<ul class="mui-table-view mui-grid-view">
+				<li class="mui-table-view-cell mui-media mui-col-xs-6 z_home_li">
+					<a href="#">
+						<img class="mui-media-object" src="../images/home_1.png">
+						<div class="mui-media-body">企业信息公告</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6 z_home_li">
+					<a href="#">
+						<img class="mui-media-object" src="../images/home_2.png">
+						<div class="mui-media-body">合格证申报信息</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6 z_home_li">
+					<a href="#"><img class="mui-media-object" src="../images/home_3.png">
+						<div class="mui-media-body">COC申报信息</div>
+					</a>
+				</li>
+				<li class="mui-table-view-cell mui-media mui-col-xs-6 z_home_li">
+					<a href="#">
+						<img class="mui-media-object" src="../images/home_4.png">
+						<div class="mui-media-body">油耗申报信息</div>
+					</a>
+				</li>
+			</ul>
+
+			<div id="bottomPopover" class="mui-popover mui-popover-bottom">
+				<div class="mui-popover-arrow"></div>
+				<div class="mui-scroll-wrapper">
+					<div class="mui-scroll">
+						<ul class="mui-table-view">
+							<li class="mui-table-view-cell">
+								<a href="../compare/yz-hgz.html">合格证数据对比</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="../compare/yz-coc.html">COC数据对比</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="../compare/yz-yh.html">油耗数据对比</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="../compare/yz-mp.html">铭牌数据对比</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="../compare/yz-lbj.html">零部件数据对比</a>
+							</li>
+							<li class="mui-table-view-cell">
+								<a href="../compare/yz-yzx.html">三证数据一致性对比</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+
+			</div>
+
+			<a class="openMenu_a" href="#popover" id="openPopover"></a>
 		</div>
+
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
-			mui.init()
+			mui.init();
+
+			mui.ready(function() {
+				var gallery = mui('.mui-slider');
+				gallery.slider({
+					interval: 2000 //自动轮播周期，若为0则不自动播放，默认为0；
+				});
+
+				//添加newId自定义事件监听
+				window.addEventListener('openMenu', function(e) {
+					//跨webvie获取参数
+					var name = e.detail.name;
+					console.log("触发成功");
+					console.log(name);
+					mui('.mui-scroll-wrapper').scroll();
+					mui('.mui-popover').popover('toggle', document.getElementById("openPopover"));
+				});
+			})
 		</script>
 	</body>
 

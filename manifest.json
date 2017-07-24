@@ -197,7 +197,8 @@
 					"js/mui.min.js",
 					"fonts/mui.ttf",
 					"css/mui.min.css",
-					"nav/tab-one.html"
+					"nav/tab-one.html",
+					"css/app.css"
 				],
 				"refer": [
 					"nav/tab-two.html",
@@ -216,7 +217,11 @@
 					"images/d4.jpg",
 					"images/d3.jpg",
 					"images/d1.jpg",
-					"images/d2.jpg"
+					"images/d2.jpg",
+					"images/home_2.png",
+					"images/home_1.png",
+					"images/home_4.png",
+					"images/home_3.png"
 				],
 				"refer": [
 					"confsplit/confsplit-main.html",
@@ -229,7 +234,8 @@
 			"nav/tab-three.html": {
 				"resources": [
 					"js/mui.min.js",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"css/app.css"
 				],
 				"refer": [],
 				"priority": 0
@@ -260,7 +266,13 @@
 			"nav/tab-four.html": {
 				"resources": [
 					"js/mui.min.js",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"js/mui.zoom.js",
+					"css/app.css",
+					"css/preview_image.css",
+					"images/1.jpg",
+					"js/mui.previewimage.js",
+					"js/mui.js"
 				],
 				"refer": [],
 				"priority": 0
@@ -268,7 +280,15 @@
 			"nav/tab-one.html": {
 				"resources": [
 					"js/mui.min.js",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"images/home_2.png",
+					"images/2.jpg",
+					"images/home_1.png",
+					"css/app.css",
+					"images/home_4.png",
+					"images/1.jpg",
+					"images/home_3.png",
+					"images/3.jpg"
 				],
 				"refer": [],
 				"priority": 0
@@ -287,7 +307,8 @@
 				"resources": [
 					"js/mui.min.js",
 					"css/mui.min.css",
-					"fonts/mui.ttf"
+					"fonts/mui.ttf",
+					"js/mui.pullToRefresh.js"
 				],
 				"refer": [
 					"confsplit/args-filing.html"
@@ -413,7 +434,6 @@
 		"idle": {
 			"resources": [
 				"login/tx.jpg",
-				"js/mui.js",
 				"css/mui.css",
 				"nav/main.html",
 				"login/login-bak.html"
