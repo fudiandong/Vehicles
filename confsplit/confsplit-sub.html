@@ -20,10 +20,13 @@
 				private String ANGroup;//批次
 				private String issuedDate;//发布日期
 				private String zwpp;//中文品牌-->
-				<div class="mui-table-view-cell" style="width: 100%;padding-left: 25px;">
-					车辆型号：<input id="qmodel" class="mui-col-sm-3" /><span style="padding-left: 5px;">批次：</span><input id="qgroup" class="mui-col-sm-3" />
-					<button id="qbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-search">
+				<div class="" style="width: 100%;padding-left: 25px;">
+					车辆型号：<input id="qmodel" class="mui-col-sm-2" /><span style="padding-left: 5px;">批次：</span><input id="qgroup" class="mui-col-sm-2" />
+					<button id="cbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-search mui-col-sm-2">
 		                                        查询
+		        	</button>
+		        	<button id="qbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-clear mui-col-sm-2">
+		                                        清空
 		        	</button>
 				</div>
 				<ul class="mui-table-view">
@@ -87,10 +90,13 @@
 			 */
 			function pulldownRefresh() {
 				console.log("下拉刷新");
+				var qmodel = document.getElementById("qmodel").value;
+				var qgroup = document.getElementById("qgroup").value;
+				console.log(qmodel + '---' + qgroup);
 				setTimeout(function() {
 					page = 1;
 					//http://114.115.212.225:8080/jeesite/a/BaseDataCheck/Announcement/AppAnList?ANGroup=&&ANModel=SVW71612CH&pageNo=1&&pageSize=5
-					var url = urlpath + '/a/BaseDataCheck/Announcement/AppAnList?pageNo=' + page + '&pageSize=' + pageSize;
+					var url = urlpath + '/a/BaseDataCheck/Announcement/AppAnList?ANGroup='+qgroup+'&ANModel='+qmodel+'&pageNo=' + page + '&pageSize=' + pageSize;
 					console.log(url);
 					mui.getJSON(url, {}, function(data) {
 						console.log(JSON.stringify(data));
@@ -116,8 +122,11 @@
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
+				var qmodel = document.getElementById("qmodel").value;
+				var qgroup = document.getElementById("qgroup").value;
 				setTimeout(function() {
-					var url = urlpath + '/a/BaseDataCheck/Announcement/AppAnList?pageNo=' + page + '&pageSize=' + pageSize;
+					var url = urlpath + '/a/BaseDataCheck/Announcement/AppAnList?ANGroup='+qgroup+'&ANModel='+qmodel+'&pageNo=' + page + '&pageSize=' + pageSize;
+//					var url = urlpath + '/a/BaseDataCheck/Announcement/AppAnList?pageNo=' + page + '&pageSize=' + pageSize;
 					console.log(url);
 					mui.getJSON(url, {}, function(data) {
 						var ul = document.querySelector('.mui-table-view');
@@ -176,11 +185,16 @@
 				}
 				return fragment;
 			};
-			document.getElementById("qbtn").addEventListener('click',function(){
-				console.log("333");
+			// 清空按钮操作
+			document.getElementById("qbtn").addEventListener('tap', function() {
+				document.getElementById("qmodel").value = '';
+				document.getElementById("qgroup").value = '';
+				pulldownRefresh();
 			});
-			
-			
+			// 查询按钮操作
+			document.getElementById("cbtn").addEventListener('tap', function() {
+				pulldownRefresh();
+			});
 		</script>
 	</body>
 
