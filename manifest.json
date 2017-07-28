@@ -241,7 +241,9 @@
 					"js/mui.pullToRefresh.js",
 					"fonts/mui.ttf"
 				],
-				"refer": [],
+				"refer": [
+					"pagecode/page-list.html"
+				],
 				"priority": 0
 			},
 			"login/login.html": {
@@ -468,6 +470,14 @@
 					"images/1.jpg",
 					"css/mui.min.css",
 					"nav/tab-main.html"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"pagecode/page-list.html": {
+				"resources": [
+					"js/mui.min.js",
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0

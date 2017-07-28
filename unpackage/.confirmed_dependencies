@@ -43,10 +43,13 @@
 			"js/mui.min.js",
 			"css/mui.min.css",
 			"css/app.css",
-			"compare/yz-mp.html"
+			"compare/yz-mp.html",
+			"js/mui.pullToRefresh.js",
+			"fonts/mui.ttf"
 		],
 		"refer": [
-			"compare/yz-mp.html"
+			"compare/yz-mp.html",
+			"pagecode/page-list.html"
 		]
 	},
 	"login/login.html": {
@@ -250,6 +253,12 @@
 			"css/mui.min.css",
 			"js/mui.previewimage.js",
 			"js/mui.js"
+		]
+	},
+	"pagecode/page-list.html": {
+		"resources": [
+			"js/mui.min.js",
+			"css/mui.min.css"
 		]
 	}
 }

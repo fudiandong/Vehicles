@@ -159,7 +159,7 @@
 				}
 				for(var i = 0; i < count; i++) {
 					li = document.createElement('li');
-					li.id = data.rDate[i].id
+					li.id = data.rDate[i].id + "-fudd-" + data.rDate[i].anid;
 					li.className = 'mui-table-view-cell';
 					li.innerHTML =
 						'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + parseInt(pageSize * (page - 1) + i + 1) + '</span>' +
@@ -175,20 +175,20 @@
 						'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + jiaoyan(data.rDate[i].encode) + '</span>' +
 						'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + jiaoyan(data.rDate[i].editioncode) + '</span>';
 					li.addEventListener('tap', function() {
-						mui.toast("稍后开放");
-//						mui.openWindow({
-//							id: this.getAttribute("id"),
-//							url: 'args-filing.html',
-//							styles: {
-//								popGesture: 'close'
-//							},
-//							show: {
-//								aniShow: 'slide-in-right'
-//							},
-//							waiting: {
-//								autoShow: false
-//							}
-//						});
+//						mui.toast("稍后开放");
+						mui.openWindow({
+							id: this.getAttribute("id"),
+							url: '../pagecode/page-list.html',
+							styles: {
+								popGesture: 'close'
+							},
+							show: {
+								aniShow: 'slide-in-right'
+							},
+							waiting: {
+								autoShow: false
+							}
+						});
 					});
 					fragment.appendChild(li);
 				}

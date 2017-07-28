@@ -1,0 +1,64 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="UTF-8">
+		<title></title>
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<link href="../css/mui.min.css" rel="stylesheet" />
+	</head>
+
+	<body>
+		<div id="slider" class="mui-slider mui-fullscreen">
+			<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="height: 44px;background: red;">
+				<div id="divnav" class="mui-scroll" style="width: 100%;padding-top: 5px;font-size: 16px;">
+					<!--<a class="mui-control-item mui-active" href="#item1mobile" style="width: 45%;">
+							组织会议
+						</a>
+						<a class="mui-control-item" href="#item2mobile" style="width: 45%;">
+							组织活动
+						</a>-->
+				</div>
+			</div>
+			<div id="divcont" class="mui-slider-group">
+				<!--<div id="item1mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll1" class="mui-scroll-wrapper">
+						<div class="mui-scroll mui-card">
+							<ul class="mui-table-view">
+							</ul>
+						</div>
+					</div>
+				</div>
+				<div id="item2mobile" class="mui-slider-item mui-control-content">
+					<div id="scroll2" class="mui-scroll-wrapper">
+						<div class="mui-scroll mui-card">
+							<ul class="mui-table-view">
+							</ul>
+						</div>
+					</div>
+				</div>-->
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui.plusReady(function() {
+				var wv = plus.webview.currentWebview();
+				var wvid = wv.id;
+				console.log(wvid);
+				var data = wvid.split("-fudd-");
+				var csid = data[0];
+				var anid = data[1];
+				console.log(csid);
+				console.log(anid);
+				var listUrl = urlpath + '/a/configuration_rule/tcConfigurationRule/apppagecode?anid=' + anid + "&csid="+ csid;
+				console.log(listUrl);
+				mui.getJSON(listUrl, {}, function(data) {
+					console.log(JSON.stringify(data));
+				});
+
+			});
+		</script>
+	</body>
+
+</html>
