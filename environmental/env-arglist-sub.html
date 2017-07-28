@@ -23,10 +23,13 @@
 		    public String veModel;//车辆型号
 		    public String engineModel;//发动机型号
 			public String openTime;//公开时间-->
-				<div class="mui-table-view-cell" style="width: 100%;padding-left: 25px;">
-					车辆型号：<input class="mui-col-sm-3" />
-					<button type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-search">
+				<div class="" style="width: 100%;padding-left: 25px;">
+					车辆型号：<input id="qmodel" class="mui-col-sm-3" />
+					<button id="cbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-search mui-col-sm-2">
 		                                        查询
+		        	</button>
+		        	<button id="qbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-clear mui-col-sm-2">
+		                                        清空
 		        	</button>
 				</div>
 				<ul class="mui-table-view">
@@ -71,9 +74,10 @@
 			 */
 			function pulldownRefresh() {
 				console.log("下拉刷新");
+				var veModel = document.getElementById("qmodel").value;
 				setTimeout(function() {
 					page = 1;
-					var url = urlpath + '/a/BaseDataCheck/Environment/APPlist?pageNo=' + page + '&pageSize=' + pageSize;
+					var url = urlpath + '/a/BaseDataCheck/Environment/APPlist?veModel='+veModel+'&pageNo=' + page + '&pageSize=' + pageSize;
 					console.log(url);
 					mui.getJSON(url, {}, function(data) {
 						console.log(JSON.stringify(data));
@@ -99,8 +103,10 @@
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
+				var veModel = document.getElementById("qmodel").value;
 				setTimeout(function() {
-					var url = urlpath + '/a/BaseDataCheck/Environment/APPlist?pageNo=' + page + '&pageSize=' + pageSize;
+					var url = urlpath + '/a/BaseDataCheck/Environment/APPlist?veModel='+veModel+'&pageNo=' + page + '&pageSize=' + pageSize;
+//					var url = urlpath + '/a/BaseDataCheck/Environment/APPlist?pageNo=' + page + '&pageSize=' + pageSize;
 					console.log(url);
 					mui.getJSON(url, {}, function(data) {
 						var ul = document.querySelector('.mui-table-view');
@@ -156,6 +162,15 @@
 				}
 				return fragment;
 			};
+			// 清空按钮操作
+			document.getElementById("qbtn").addEventListener('tap', function() {
+				document.getElementById("qmodel").value = '';
+				pulldownRefresh();
+			});
+			// 查询按钮操作
+			document.getElementById("cbtn").addEventListener('tap', function() {
+				pulldownRefresh();
+			});
 		</script>
 	</body>
 
