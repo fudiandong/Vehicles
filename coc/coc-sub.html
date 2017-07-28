@@ -20,6 +20,15 @@
 				private String ANGroup;//批次
 				private String issuedDate;//发布日期
 				private String zwpp;//中文品牌-->
+				<div class="" style="width: 100%;padding-left: 25px;">
+					车型名称：<input id="qmodel" class="mui-col-sm-2" /><span style="padding-left: 5px;">COC编号：</span><input id="qgroup" class="mui-col-sm-2" />
+					<button id="cbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-search mui-col-sm-2">
+		                                        查询
+		        	</button>
+		        	<button id="qbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-clear mui-col-sm-2">
+		                                        清空
+		        	</button>
+				</div>
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell" style="width: 100%;">
 						<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">序号</span>
@@ -82,9 +91,11 @@
 			 */
 			function pulldownRefresh() {
 				console.log("下拉刷新");
+				var cartype = document.getElementById("qmodel").value;
+				var coccode = document.getElementById("qgroup").value;
 				setTimeout(function() {
 					page = 1;
-					var url = urlpath + '/a/BaseDataCheck/COC/APPlist?carType=&&cocCode=&&pageNo=' + page + '&pageSize=' + pageSize;
+					var url = urlpath + '/a/BaseDataCheck/COC/APPlist?carType='+cartype+'&cocCode='+coccode+'&pageNo=' + page + '&pageSize=' + pageSize;
 					console.log(url);
 					mui.getJSON(url, {}, function(data) {
 						console.log(JSON.stringify(data));
@@ -170,6 +181,16 @@
 				}
 				return fragment;
 			};
+			// 清空按钮操作
+			document.getElementById("qbtn").addEventListener('tap', function() {
+				document.getElementById("qmodel").value = '';
+				document.getElementById("qgroup").value = '';
+				pulldownRefresh();
+			});
+			// 查询按钮操作
+			document.getElementById("cbtn").addEventListener('tap', function() {
+				pulldownRefresh();
+			});
 		</script>
 	</body>
 
