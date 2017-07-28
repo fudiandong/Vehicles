@@ -121,8 +121,10 @@
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
+				var cartype = document.getElementById("qmodel").value;
+				var coccode = document.getElementById("qgroup").value;
 				setTimeout(function() {
-					var url = urlpath + '/a/BaseDataCheck/COC/APPlist?carType=&&cocCode=&&pageNo=' + page + '&pageSize=' + pageSize;
+					var url = urlpath + '/a/BaseDataCheck/COC/APPlist?carType='+cartype+'&cocCode='+coccode+'&pageNo=' + page + '&pageSize=' + pageSize;
 					console.log(url);
 					mui.getJSON(url, {}, function(data) {
 						var ul = document.querySelector('.mui-table-view');
