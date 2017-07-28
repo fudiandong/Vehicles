@@ -6,16 +6,108 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
+		<style>
+			html,
+			body {
+				background-color: #efeff4;
+			}
+			
+			.mui-bar~.mui-content .mui-fullscreen {
+				top: 44px;
+				height: auto;
+			}
+			
+			.mui-pull-top-tips {
+				position: absolute;
+				top: -20px;
+				left: 50%;
+				margin-left: -25px;
+				width: 40px;
+				height: 40px;
+				border-radius: 100%;
+				z-index: 1;
+			}
+			
+			.mui-bar~.mui-pull-top-tips {
+				top: 24px;
+			}
+			
+			.mui-pull-top-wrapper {
+				width: 42px;
+				height: 42px;
+				display: block;
+				text-align: center;
+				background-color: #efeff4;
+				border: 1px solid #ddd;
+				border-radius: 25px;
+				background-clip: padding-box;
+				box-shadow: 0 4px 10px #bbb;
+				overflow: hidden;
+			}
+			
+			.mui-pull-top-tips.mui-transitioning {
+				-webkit-transition-duration: 200ms;
+				transition-duration: 200ms;
+			}
+			
+			.mui-pull-top-tips .mui-pull-loading {
+				/*-webkit-backface-visibility: hidden;
+				-webkit-transition-duration: 400ms;
+				transition-duration: 400ms;*/
+				margin: 0;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon,
+			.mui-pull-top-wrapper .mui-spinner {
+				margin-top: 7px;
+			}
+			
+			.mui-pull-top-wrapper .mui-icon.mui-reverse {
+				/*-webkit-transform: rotate(180deg) translateZ(0);*/
+			}
+			
+			.mui-pull-bottom-tips {
+				text-align: center;
+				background-color: #efeff4;
+				font-size: 15px;
+				line-height: 40px;
+				color: #777;
+			}
+			
+			.mui-pull-top-canvas {
+				overflow: hidden;
+				background-color: #fafafa;
+				border-radius: 40px;
+				box-shadow: 0 4px 10px #bbb;
+				width: 40px;
+				height: 40px;
+				margin: 0 auto;
+			}
+			
+			.mui-pull-top-canvas canvas {
+				width: 40px;
+			}
+			
+			.mui-slider-indicator.mui-segmented-control {
+				background-color: #efeff4;
+			}
+		</style>
 	</head>
 
 	<body>
 		<div id="slider" class="mui-slider mui-fullscreen">
 			<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted" style="height: 44px;background: red;">
 				<div id="divnav" class="mui-scroll" style="width: 100%;padding-top: 5px;font-size: 16px;">
-					<!--<a class="mui-control-item mui-active" href="#item1mobile" style="width: 45%;">
+					<!--<a class="mui-control-item mui-active" href="#item1mobile" style="width: 17%;">
 							组织会议
 						</a>
-						<a class="mui-control-item" href="#item2mobile" style="width: 45%;">
+						<a class="mui-control-item" href="#item2mobile" style="width: 17%;">
+							组织活动
+						</a>
+						<a class="mui-control-item" href="#item2mobile" style="width: 17%;">
+							组织活动
+						</a>
+						<a class="mui-control-item" href="#item2mobile" style="width: 17%;">
 							组织活动
 						</a>-->
 				</div>
@@ -47,16 +139,67 @@
 				var wvid = wv.id;
 				console.log(wvid);
 				var data = wvid.split("-fudd-");
-				var csid = data[0];
-				var anid = data[1];
+				//				var csid = data[0];
+				//				var anid = data[1];
+
+				var csid = '088aec5e013b4b7cb1b625c247609078';
+				var anid = '9f50701b98634f63ba8dafa56f9aec8c';
+
 				console.log(csid);
 				console.log(anid);
-				var listUrl = urlpath + '/a/configuration_rule/tcConfigurationRule/apppagecode?anid=' + anid + "&csid="+ csid;
+				var listUrl = urlpath + '/a/configuration_rule/tcConfigurationRule/apppagecode?anid=' + anid + "&csid=" + csid;
 				console.log(listUrl);
 				mui.getJSON(listUrl, {}, function(data) {
 					console.log(JSON.stringify(data));
-				});
+					var len = data.rDate.length;
+					console.log(len);
+					console.log(data.rDate[0]);
+					var diva = document.getElementById("divnav");
+					var w = parseInt(100 / len) - 3;
+					console.log(w);
+					var divcont = document.getElementById("divcont");
+					for(var i = 0; i < len; i++) {
+						var div = document.createElement('div');
+//						div.id = "item" + (i + 1) + "mobile";
+						div.setAttribute("id","item" + (i + 1) + "mobile");
+						var idm = div.getAttribute("id");
+						console.log(idm);
+						div.className = "mui-slider-item mui-control-content";
+						div.innerHTML =
+							'<div class="mui-scroll-wrapper">' +
+							'<div class="mui-scroll mui-card">' +
+							'<ul class="mui-table-view">' + (i+1) +
+							'</ul>' +
+							'</div>' +
+							'</div>';
+						divcont.appendChild(div);
+					}
+					
+					
+					for(var i = 0; i < len; i++) {
+						var a = document.createElement('a');
+						if(i == 0) {
+							a.className = "mui-control-item mui-active mui-ellipsis";
+						} else {
+							a.className = "mui-control-item mui-ellipsis";
+						}
+						a.href = "#item" + (i + 1) + "mobile";
+						a.setAttribute("style", "width: " + w + "%;");
+						a.innerHTML = data.rDate[i];
+						diva.appendChild(a);
 
+						//						<div id="item1mobile" class="mui-slider-item mui-control-content">
+						//							<div class="mui-scroll-wrapper">
+						//								<div class="mui-scroll mui-card">
+						//									<ul class="mui-table-view">
+						//									</ul>
+						//								</div>
+						//							</div>
+						//						</div>
+
+					}
+					
+				});
 			});
 		</script>
 	</body>
