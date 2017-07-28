@@ -20,18 +20,26 @@
 		<div id="pullrefresh" class="mui-content mui-scroll-wrapper mui-card">
 			<div class="mui-scroll">
 				<!--public String productComp;//生产企业
-		    public String currencyName;//通用名称
-		    public String veModel;//车辆型号
-		    public String veType;//车辆种类
-		    public String displacement;//排量
-		    public String ratedPower;//额定功率
-		    public String transmission;//变速器
-		    public String fuleType;//燃料种类
-		    public String urbanFuelConsumption;//市区工况油耗
-		    public String suburbFuelConsumption;//市郊工况油耗
-		    public String generalFuelConsumption;//综合工况油耗
-			public String releaseData;//公告日期-->
-
+			    public String currencyName;//通用名称
+			    public String veModel;//车辆型号
+			    public String veType;//车辆种类
+			    public String displacement;//排量
+			    public String ratedPower;//额定功率
+			    public String transmission;//变速器
+			    public String fuleType;//燃料种类
+			    public String urbanFuelConsumption;//市区工况油耗
+			    public String suburbFuelConsumption;//市郊工况油耗
+			    public String generalFuelConsumption;//综合工况油耗
+				public String releaseData;//公告日期-->
+				<div class="" style="width: 100%;padding-left: 25px;">
+					车辆型号：<input id="qmodel" class="mui-col-sm-3" />
+					<button id="cbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-search mui-col-sm-2">
+		                                        查询
+		        	</button>
+					<button id="qbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-clear mui-col-sm-2">
+		                                         清空
+		        	</button>
+				</div>
 				<ul class="mui-table-view">
 					<li class="mui-table-view-cell" style="width: 100%;float: left;">
 						<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">生产企业</span>
@@ -61,7 +69,7 @@
 				pullRefresh: {
 					container: '#pullrefresh',
 					down: {
-//						auto: true, //可选,默认false.首次加载自动下拉刷新一次
+						//						auto: true, //可选,默认false.首次加载自动下拉刷新一次
 						contentdown: "下拉可以刷新", //可选，在下拉可刷新状态时，下拉刷新控件上显示的标题内容
 						contentover: "释放立即刷新", //可选，在释放可刷新状态时，下拉刷新控件上显示的标题内容
 						contentrefresh: "正在刷新...", //可选，正在刷新状态时，下拉刷新控件上显示的标题内容
@@ -81,9 +89,10 @@
 			 */
 			function pulldownRefresh() {
 				console.log("下拉刷新");
+				var veModel = document.getElementById("qmodel").value;
 				setTimeout(function() {
 					page = 1;
-					var url = urlpath + '/a/BaseDataCheck/Fuel/APPlist?pageNo=' + page + '&pageSize=' + pageSize;
+					var url = urlpath + '/a/BaseDataCheck/Fuel/APPlist?veModel='+veModel+'&pageNo=' + page + '&pageSize=' + pageSize;
 					console.log(url);
 					mui.getJSON(url, {}, function(data) {
 						console.log(JSON.stringify(data));
@@ -109,8 +118,10 @@
 			 * 上拉加载具体业务实现
 			 */
 			function pullupRefresh() {
+				var veModel = document.getElementById("qmodel").value;
 				setTimeout(function() {
-					var url = urlpath + '/a/BaseDataCheck/Fuel/APPlist?pageNo=' + page + '&pageSize=' + pageSize;
+					var url = urlpath + '/a/BaseDataCheck/Fuel/APPlist?veModel='+veModel+'&pageNo=' + page + '&pageSize=' + pageSize;
+//					var url = urlpath + '/a/BaseDataCheck/Fuel/APPlist?pageNo=' + page + '&pageSize=' + pageSize;
 					console.log(url);
 					mui.getJSON(url, {}, function(data) {
 						var ul = document.querySelector('.mui-table-view');
@@ -139,7 +150,7 @@
 				}
 				for(var i = 0; i < count; i++) {
 					li = document.createElement('li');
-					li.style.width= "100%";
+					li.style.width = "100%";
 					li.id = data.rDate[i].id;
 					li.className = 'mui-table-view-cell mys-li';
 					li.innerHTML =
@@ -174,6 +185,15 @@
 				}
 				return fragment;
 			};
+			// 清空按钮操作
+			document.getElementById("qbtn").addEventListener('tap', function() {
+				document.getElementById("qmodel").value = '';
+				pulldownRefresh();
+			});
+			// 查询按钮操作
+			document.getElementById("cbtn").addEventListener('tap', function() {
+				pulldownRefresh();
+			});
 		</script>
 	</body>
 
