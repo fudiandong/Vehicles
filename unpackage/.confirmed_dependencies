@@ -28,7 +28,8 @@
 			"images/home_2.png",
 			"images/home_1.png",
 			"images/home_4.png",
-			"images/home_3.png"
+			"images/home_3.png",
+			"css/app.css"
 		],
 		"refer": [
 			"confsplit/confsplit-main.html",
@@ -65,7 +66,9 @@
 			"guide/yuandian.png",
 			"guide/guts.png",
 			"guide/bi2.jpg",
-			"guide/bi.jpg"
+			"guide/bi.jpg",
+			"js/mui.min.js",
+			"css/mui.min.css"
 		],
 		"refer": []
 	},
@@ -123,7 +126,8 @@
 		"resources": [
 			"js/mui.min.js",
 			"css/mui.min.css",
-			"js/mui.pullToRefresh.js"
+			"js/mui.pullToRefresh.js",
+			"fonts/mui.ttf"
 		],
 		"refer": [
 			"coc/coc-args-main.html"
@@ -183,7 +187,9 @@
 	"qtrip/qtrip-args-sub.html": {
 		"resources": [
 			"js/mui.min.js",
-			"css/mui.min.css"
+			"css/mui.min.css",
+			"js/mui.pullToRefresh.js",
+			"fonts/mui.ttf"
 		],
 		"refer": []
 	},

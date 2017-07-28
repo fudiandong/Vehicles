@@ -6,60 +6,18 @@
 		<title></title>
 		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
 		<link href="../css/mui.min.css" rel="stylesheet" />
-		<link rel="stylesheet" type="text/css" href="../css/app.css"/>
+		<link rel="stylesheet" type="text/css" href="../css/app.css" />
 	</head>
 
 	<body>
 		<div class="mui-content">
-		    配置拆分
-		    
-		    
-		    <div id="bottomPopover" class="mui-popover mui-popover-bottom">
-				<div class="mui-popover-arrow"></div>
-				<div class="mui-scroll-wrapper">
-					<div class="mui-scroll">
-						<ul class="mui-table-view">
-							<li class="mui-table-view-cell">
-								<a href="../compare/yz-hgz.html">合格证数据对比</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a href="../compare/yz-coc.html">COC数据对比</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a href="../compare/yz-yh.html">油耗数据对比</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a href="../compare/yz-mp.html">铭牌数据对比</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a href="../compare/yz-lbj.html">零部件数据对比</a>
-							</li>
-							<li class="mui-table-view-cell">
-								<a href="../compare/yz-yzx.html">三证数据一致性对比</a>
-							</li>
-						</ul>
-					</div>
-				</div>
-
-			</div>
-
-			<a class="openMenu_a" href="#popover" id="openPopover"></a>
+			配置拆分
 
 		</div>
-		
+
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
-			mui.init()
-			
-			//添加newId自定义事件监听
-				window.addEventListener('openMenu', function(e) {
-					//跨webvie获取参数
-					var name = e.detail.name;
-					console.log("触发成功");
-					console.log(name);
-					mui('.mui-scroll-wrapper').scroll();
-					mui('.mui-popover').popover('toggle', document.getElementById("openPopover"));
-				});
+			mui.init();
 		</script>
 	</body>
 
