@@ -49,7 +49,8 @@
 		],
 		"refer": [
 			"compare/yz-mp.html",
-			"pagecode/page-list.html"
+			"pagecode/page-list.html",
+			"pagecode/tab-orglive.html"
 		]
 	},
 	"login/login.html": {
@@ -258,7 +259,37 @@
 	"pagecode/page-list.html": {
 		"resources": [
 			"js/mui.min.js",
+			"css/mui.min.css",
+			"js/webviewGroup.js"
+		],
+		"refer": [
+			"pagecode/page-details.html",
+			"pagecode/page-sub.html"
+		]
+	},
+	"pagecode/page-details.html": {
+		"resources": [
+			"js/mui.min.js",
 			"css/mui.min.css"
+		]
+	},
+	"pagecode/tab-orglive.html": {
+		"resources": [
+			"js/mui.pullToRefresh.js",
+			"css/my.css",
+			"js/common.js",
+			"js/mui.min.js",
+			"css/iconfont.css",
+			"css/mui.min.css",
+			"css/icons-extra.css"
+		]
+	},
+	"pagecode/page-sub.html": {
+		"resources": [
+			"js/mui.pullToRefresh.js",
+			"js/mui.min.js",
+			"css/mui.min.css",
+			"fonts/mui.ttf"
 		]
 	}
 }

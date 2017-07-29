@@ -116,7 +116,7 @@
 				<!--<div id="item1mobile" class="mui-slider-item mui-control-content">
 					<div id="scroll1" class="mui-scroll-wrapper">
 						<div class="mui-scroll mui-card">
-							<ul class="mui-table-view">
+							<ul class="mui-table-view">555
 							</ul>
 						</div>
 					</div>
@@ -124,7 +124,7 @@
 				<div id="item2mobile" class="mui-slider-item mui-control-content">
 					<div id="scroll2" class="mui-scroll-wrapper">
 						<div class="mui-scroll mui-card">
-							<ul class="mui-table-view">
+							<ul class="mui-table-view">666
 							</ul>
 						</div>
 					</div>
@@ -134,16 +134,23 @@
 		<script src="../js/mui.min.js"></script>
 		<script type="text/javascript">
 			mui.init();
+
+			mui.back = function() {
+				plus.webview.currentWebview().close();
+			}
+
 			mui.plusReady(function() {
+				var firstwvid;
 				var wv = plus.webview.currentWebview();
 				var wvid = wv.id;
 				console.log(wvid);
 				var data = wvid.split("-fudd-");
-				//				var csid = data[0];
-				//				var anid = data[1];
 
-				var csid = '088aec5e013b4b7cb1b625c247609078';
-				var anid = '9f50701b98634f63ba8dafa56f9aec8c';
+				//								var csid = data[0];
+				//								var anid = data[1];
+
+				var csid = '7a11c15cb3ed461fa3f2d2c9b7c92e3a';
+				var anid = '3f45edf5b4c84533aae5b0ee3925c139';
 
 				console.log(csid);
 				console.log(anid);
@@ -157,49 +164,118 @@
 					var diva = document.getElementById("divnav");
 					var w = parseInt(100 / len) - 3;
 					console.log(w);
-					var divcont = document.getElementById("divcont");
-					for(var i = 0; i < len; i++) {
-						var div = document.createElement('div');
-//						div.id = "item" + (i + 1) + "mobile";
-						div.setAttribute("id","item" + (i + 1) + "mobile");
-						var idm = div.getAttribute("id");
-						console.log(idm);
-						div.className = "mui-slider-item mui-control-content";
-						div.innerHTML =
-							'<div class="mui-scroll-wrapper">' +
-							'<div class="mui-scroll mui-card">' +
-							'<ul class="mui-table-view">' + (i+1) +
-							'</ul>' +
-							'</div>' +
-							'</div>';
-						divcont.appendChild(div);
-					}
-					
-					
 					for(var i = 0; i < len; i++) {
 						var a = document.createElement('a');
 						if(i == 0) {
 							a.className = "mui-control-item mui-active mui-ellipsis";
+							firstwvid = data.rDate[i] + "-fudd-" + csid + "-fudd-" + anid;
 						} else {
 							a.className = "mui-control-item mui-ellipsis";
 						}
 						a.href = "#item" + (i + 1) + "mobile";
+						console.log(a.getAttribute("href"));
+						a.id = data.rDate[i] + "-fudd-" + csid + "-fudd-" + anid;
+						//						a.name = "tabname" + (i + 1);
 						a.setAttribute("style", "width: " + w + "%;");
 						a.innerHTML = data.rDate[i];
+						a.addEventListener('tap', function() {
+							mui.openWindow({
+								id: this.getAttribute("id"),
+								url: 'page-sub.html',
+								styles: {
+									top: '45px',
+									popGesture: 'close'
+								},
+								show: {
+									aniShow: 'slide-in-right'
+								},
+								waiting: {
+									autoShow: false
+								}
+							});
+						});
 						diva.appendChild(a);
-
-						//						<div id="item1mobile" class="mui-slider-item mui-control-content">
-						//							<div class="mui-scroll-wrapper">
-						//								<div class="mui-scroll mui-card">
-						//									<ul class="mui-table-view">
-						//									</ul>
-						//								</div>
-						//							</div>
-						//						</div>
-
 					}
-					
+					mui.openWindow({
+						id: firstwvid,
+						url: 'page-sub.html',
+						styles: {
+							top: '45px',
+							popGesture: 'close'
+						},
+						show: {
+							aniShow: 'slide-in-right'
+						},
+						waiting: {
+							autoShow: false
+						}
+					});
+					//					var divcont = document.getElementById("divcont");
+					//					for(var i = 0; i < len; i++) {
+					//						var div = document.createElement('div');
+					//						//						div.id = "item" + (i + 1) + "mobile";
+					//						div.setAttribute("id", "item" + (i + 1) + "mobile");
+					//						var idm = div.getAttribute("id");
+					//						console.log(idm);
+					//						div.className = "mui-slider-item mui-control-content";
+					//						div.innerHTML =
+					//							'<div class="mui-scroll-wrapper">' +
+					//							'<div class="mui-scroll mui-card">' +
+					//							'<ul class="mui-table-view">' + (i + 1) +
+					//							'</ul>' +
+					//							'</div>' +
+					//							'</div>';
+					//						divcont.appendChild(div);
+					//					}
+
 				});
+
+				mui(".mui-scroll").on("tap", ".mui-control-item", function(e) {
+					var wid = this.getAttribute("id");
+					//					group.switchTab(wid);
+					console.log(wid);
+				});
+				//当前激活选项
+				var activeTab = '#item1mobile';
+				//选项卡点击事件
+				mui('.mui-scroll').on('tap', 'a', function(e) {
+					console.log(activeTab);
+					var targetTab = this.getAttribute('href');
+					if(targetTab == activeTab) {
+						return;
+					}
+					//显示目标选项卡
+					//若为iOS平台或非首次显示，则直接显示
+					if(mui.os.ios) {
+						plus.webview.show(targetTab);
+					} else {
+						//否则，使用fade-in动;画，且保存变量
+						plus.webview.show(targetTab, "fade-in", 300);
+					}
+					//隐藏当前;
+					plus.webview.close(activeTab);
+					//更改当前活跃的选项卡
+					activeTab = targetTab;
+				});
+				//自定义事件，模拟点击“首页选项卡”
+				document.addEventListener('gohome', function() {
+					console.log("go");
+					goNews();
+				});
+				console.log("4555");
+				var goNews = function() {
+					console.log("2222");
+					var defaultTab = document.getElementsByName("tabname1")
+					//模拟首页点击
+					mui.trigger(defaultTab, 'tap');
+					//				//切换选项卡高亮
+					//				var current = document.querySelector(".mui-scroll>.mui-tab-item.mui-active");
+					//				if(defaultTab !== current) {
+					//					current.classList.remove('mui-active');
+					//					defaultTab.classList.add('mui-active');
+					//				}
+				}
+
 			});
 		</script>
 	</body>
