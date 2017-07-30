@@ -260,7 +260,9 @@
 		"resources": [
 			"js/mui.min.js",
 			"css/mui.min.css",
-			"js/webviewGroup.js"
+			"js/webviewGroup.js",
+			"pagecode/page-sub.html",
+			"fonts/mui.ttf"
 		],
 		"refer": [
 			"pagecode/page-details.html",

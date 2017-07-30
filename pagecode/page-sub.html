@@ -30,6 +30,18 @@
 		<script type="text/javascript">
 			var page = 1;
 			mui.plusReady(function() {
+
+				mui.back = function() {
+					var wvs = plus.webview.all();
+					
+					for (var i=0; i<wvs.length;i++) {
+						console.log(wvs[i].id);
+						if(wvs[i].id.indexOf("-fudd-") > 0){
+							plus.webview.getWebviewById(wvs[i].id).close();
+						}
+					}
+//					plus.webview.currentWebview().close();
+				}	
 				
 				plus.screen.lockOrientation("landscape-primary");
 				var wv = plus.webview.currentWebview();
@@ -69,7 +81,7 @@
 					console.log("下拉刷新");
 //					var qmodel = document.getElementById("qmodel").value;
 //					var qgroup = document.getElementById("qgroup").value;
-					console.log(qmodel + '---' + qgroup);
+//					console.log(qmodel + '---' + qgroup);
 					setTimeout(function() {
 						page = 1;
 						//http://114.115.212.225:8080/jeesite/a/BaseDataCheck/Announcement/AppAnList?ANGroup=&&ANModel=SVW71612CH&pageNo=1&&pageSize=5
@@ -142,21 +154,21 @@
 							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].pagecode + '</span>' +
 							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + data.rDate[i].paramvalue + '</span>' +
 							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].uniflag + '</span>';
-						li.addEventListener('tap', function() {
-							mui.openWindow({
-								id: this.getAttribute("id"),
-								url: 'args-filing.html',
-								styles: {
-									popGesture: 'close'
-								},
-								show: {
-									aniShow: 'slide-in-right'
-								},
-								waiting: {
-									autoShow: false
-								}
-							});
-						});
+//						li.addEventListener('tap', function() {
+//							mui.openWindow({
+//								id: this.getAttribute("id"),
+//								url: 'args-filing.html',
+//								styles: {
+//									popGesture: 'close'
+//								},
+//								show: {
+//									aniShow: 'slide-in-right'
+//								},
+//								waiting: {
+//									autoShow: false
+//								}
+//							});
+//						});
 						fragment.appendChild(li);
 					}
 					return fragment;
