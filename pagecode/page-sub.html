@@ -36,7 +36,7 @@
 					
 					for (var i=0; i<wvs.length;i++) {
 						console.log(wvs[i].id);
-						if(wvs[i].id.indexOf("-fudd-") > 0){
+						if(wvs[i].id.indexOf("-fudd-") > 0 || wvs[i].id == 'page-sub.html'){
 							plus.webview.getWebviewById(wvs[i].id).close();
 						}
 					}

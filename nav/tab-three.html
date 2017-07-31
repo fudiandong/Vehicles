@@ -176,7 +176,7 @@
 						'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + jiaoyan(data.rDate[i].encode) + '</span>' +
 						'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + jiaoyan(data.rDate[i].editioncode) + '</span>';
 					li.addEventListener('tap', function() {
-//						mui.toast("稍后开放");
+						console.log("list id = "+ this.getAttribute("id"));
 						mui.openWindow({
 							id: this.getAttribute("id"),
 							url: '../pagecode/page-list.html',

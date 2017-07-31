@@ -146,11 +146,11 @@
 				console.log(wvid);
 				var data = wvid.split("-fudd-");
 
-				//				var csid = data[0];
-				//				var anid = data[1];
+				var csid = data[0];
+				var anid = data[1];
 
-				var csid = '0e22d113da304d3c8eca79be871db4d4';
-				var anid = 'bee1b7d0783041b0922f70e0592b1e96';
+//				var csid = '994b75498f8f4401892ecc3e8584446f';
+//				var anid = 'a4e04a577d834f7888b257d239350a71';
 
 				console.log(csid);
 				console.log(anid);
@@ -179,6 +179,7 @@
 						a.setAttribute("style", "width: " + w + "%;");
 						a.innerHTML = data.rDate[i];
 						a.addEventListener('tap', function() {
+							console.log("sub id = "+this.getAttribute("id"));
 							mui.openWindow({
 								id: this.getAttribute("id"),
 								url: 'page-sub.html',
@@ -196,6 +197,7 @@
 						});
 						diva.appendChild(a);
 					}
+					console.log("sub id = "+firstwvid);
 					mui.openWindow({
 						id: firstwvid,
 						url: 'page-sub.html',
