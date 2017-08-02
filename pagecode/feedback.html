@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en" class="feedback">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width,initial-scale=1,minimum-scale=1,maximum-scale=1,user-scalable=no" />
+		<title>问题反馈</title>
+		<link rel="stylesheet" type="text/css" href="../css/mui.min.css" />
+		<link rel="stylesheet" type="text/css" href="../css/feedback.css" />
+	</head>
+
+	<body>
+		<header class="mui-bar mui-bar-nav">
+			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
+			<button id="submit" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right">发送</button>
+			<h1 class="mui-title">图片上传</h1>
+		</header>
+		<div class="mui-content">
+			<p>图片(提供问题截图,总大小10M以下)</p>
+			<div id='image-list' class="row image-list"></div>
+			<div align="center" style="margin-top: 3%;">
+				<button id='upload' class="mui-btn mui-btn-primary anniu14" data-loading-icon="" data-loading-text="正在上传，请稍后..." style="border:0px;background-color: #4092c4; margin-bottom: 40px;">上传</button>
+			</div>
+		</div>
+		<script src="../js/mui.min.js"></script>
+		<script src="../js/feedback.js" type="text/javascript" charset="utf-8"></script>
+		<script type="text/javascript">
+			mui.init();
+			mui('.mui-scroll-wrapper').scroll();
+		</script>
+	</body>
+
+</html>
