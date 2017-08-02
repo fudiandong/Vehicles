@@ -484,7 +484,8 @@
 					"fonts/mui.ttf"
 				],
 				"refer": [
-					"pagecode/page-details.html"
+					"pagecode/page-details.html",
+					"pagecode/feedback.html"
 				],
 				"priority": 0
 			},

@@ -11,28 +11,27 @@
 	var imageIndexIdNum = 0;
 	var starIndex = 0;
 	var feedback = {
-		question: document.getElementById('question'),
-		contact: document.getElementById('contact'),
+//		contact: document.getElementById('contact'),
 		imageList: document.getElementById('image-list'),
 		submitBtn: document.getElementById('submit')
 	};
-	var url = 'https://service.dcloud.net.cn/feedback';
+	var url = 'http://iu4u9u.natappfree.cc/jeesite/a/pagecode/tcPagecode/upload?id='+webvieid;
 	feedback.files = [];
 	feedback.uploader = null;
 	feedback.deviceInfo = null;
 	mui.plusReady(function() {
 		//设备信息，无需修改
-		feedback.deviceInfo = {
-			appid: plus.runtime.appid,
-			imei: plus.device.imei, //设备标识
-			images: feedback.files, //图片文件
-			p: mui.os.android ? 'a' : 'i', //平台类型，i表示iOS平台，a表示Android平台。
-			md: plus.device.model, //设备型号
-			app_version: plus.runtime.version,
-			plus_version: plus.runtime.innerVersion, //基座版本号
-			os: mui.os.version,
-			net: '' + plus.networkinfo.getCurrentType()
-		}
+//		feedback.deviceInfo = {
+//			appid: plus.runtime.appid,
+//			imei: plus.device.imei, //设备标识
+//			images: feedback.files, //图片文件
+//			p: mui.os.android ? 'a' : 'i', //平台类型，i表示iOS平台，a表示Android平台。
+//			md: plus.device.model, //设备型号
+//			app_version: plus.runtime.version,
+//			plus_version: plus.runtime.innerVersion, //基座版本号
+//			os: mui.os.version,
+//			net: '' + plus.networkinfo.getCurrentType()
+//		}
 	});
 	/**
 	 *提交成功之后，恢复表单项 
@@ -162,19 +161,20 @@
 		if(plus.networkinfo.getCurrentType() == plus.networkinfo.CONNECTION_NONE) {
 			return mui.toast("连接网络失败，请稍后再试");
 		}
+		console.log("==============================="+JSON.stringify(feedback.files));
 		feedback.send(mui.extend({}, feedback.deviceInfo, {
-			//			content: feedback.question.value,
-			//			contact: feedback.contact.value,
 			images: feedback.files,
 			score: '' + starIndex
 		}))
 	}, false)
 	feedback.send = function(content) {
+		console.log("--------"+JSON.stringify(plus.uploader));
 		feedback.uploader = plus.uploader.createUpload(url, {
 			method: 'POST'
 		}, function(upload, status) {
 			//			plus.nativeUI.closeWaiting()
-			console.log("upload cb:" + upload.responseText);
+//			console.log("upload cb:" + upload.request);
+//			console.log("upload cb:" + upload.responseText);
 			if(status == 200) {
 				var data = JSON.parse(upload.responseText);
 				//上传成功，重置表单
@@ -189,13 +189,13 @@
 
 		});
 		//添加上传数据
-		mui.each(content, function(index, element) {
-			if(index !== 'images') {
-				console.log("addData:" + index + "," + element);
-				//				console.log(index);
-				feedback.uploader.addData(index, element)
-			}
-		});
+//		mui.each(content, function(index, element) {
+//			if(index !== 'images') {
+//				console.log("addData:" + index + "," + element);
+//				//				console.log(index);
+//				feedback.uploader.addData(index, element)
+//			}
+//		});
 		//添加上传文件
 		mui.each(feedback.files, function(index, element) {
 			var f = feedback.files[index];

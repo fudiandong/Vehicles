@@ -269,7 +269,8 @@
 		],
 		"refer": [
 			"pagecode/page-details.html",
-			"pagecode/page-sub.html"
+			"pagecode/page-sub.html",
+			"pagecode/feedback.html"
 		]
 	},
 	"pagecode/page-details.html": {

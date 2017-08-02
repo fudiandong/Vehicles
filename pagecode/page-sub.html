@@ -143,6 +143,9 @@
 						count = len;
 					}
 					for(var i = 0; i < count; i++) {
+						
+						console.log("fbid="+data.rDate[i].id);
+						console.log("photo="+data.rDate[i].photo);
 						li = document.createElement('li');
 						li.id = data.rDate[i].id
 						li.className = 'mui-table-view-cell';
@@ -154,22 +157,22 @@
 							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].pagecode + '</span>' +
 							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + data.rDate[i].paramvalue + '</span>' +
 							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].uniflag + '</span>';
-//						li.addEventListener('tap', function() {
-//							console.log("333");
-//							mui.openWindow({
-//								id: this.getAttribute("id"),
-//								url: 'feedback.html',
-//								styles: {
-//									popGesture: 'close'
-//								},
-//								show: {
-//									aniShow: 'slide-in-right'
-//								},
-//								waiting: {
-//									autoShow: false
-//								}
-//							});
-//						});
+						li.addEventListener('tap', function() {
+							
+							mui.openWindow({
+								id: this.getAttribute("id"),
+								url: 'feedback.html',
+								styles: {
+									popGesture: 'close'
+								},
+								show: {
+									aniShow: 'slide-in-right'
+								},
+								waiting: {
+									autoShow: false
+								}
+							});
+						});
 						fragment.appendChild(li);
 					}
 					return fragment;
