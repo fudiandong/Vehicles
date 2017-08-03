@@ -13,13 +13,26 @@
 		<header class="mui-bar mui-bar-nav">
 			<a class="mui-action-back mui-icon mui-icon-left-nav mui-pull-left"></a>
 			<!--<button id="submit" class="mui-btn mui-btn-blue mui-btn-link mui-pull-right">发送</button>-->
-			<h1 class="mui-title">图片上传</h1>
+			<h1 class="mui-title">修改上传</h1>
 		</header>
 		<div class="mui-content">
 			<p>图片(总大小10M以下)</p>
 			<div id='image-list' class="row image-list"></div>
+			<hr />
+			<div style="width: 100%;">
+				<span style="width: 30%;float: left;padding-left: 5px;">数据一致性</span>
+				<!--<input style="width: 60%;">-->
+				<select id="sel" style="width: 50%;">
+					<option value="0">一致</option>
+					<option value="1">不一致</option>
+				</select>
+			</div>
+			<div style="width: 100%;padding-top: 8px;">
+				<span style="width: 30%;float: left;padding-left: 5px;">备注</span>
+				<input id="remark" style="width: 60%;">
+			</div>
 			<div align="center" style="margin-top: 3%;">
-				<button id='submit' class="mui-btn mui-btn-primary anniu14" data-loading-icon="" data-loading-text="正在上传，请稍后..." style="border:0px;background-color: #4092c4; margin-bottom: 40px;">上传</button>
+				<button id='submit' class="mui-btn mui-btn-primary anniu14" data-loading-icon="" data-loading-text="正在上传，请稍后..." style="border:0px;background-color: #4092c4; margin-bottom: 40px;">修改并上传</button>
 			</div>
 		</div>
 		<script src="../js/mui.min.js"></script>
@@ -41,7 +54,7 @@
 					imageList: document.getElementById('image-list'),
 					submitBtn: document.getElementById('submit')
 				};
-				var url = urlpath+ '/a/pagecode/tcPagecode/upload?id=' + webvieid;
+				var url = urlpath + '/a/pagecode/tcPagecode/upload?id=' + webvieid;
 				feedback.files = [];
 				feedback.uploader = null;
 				feedback.deviceInfo = null;
@@ -175,6 +188,24 @@
 				};
 				feedback.newPlaceholder();
 				feedback.submitBtn.addEventListener('tap', function(event) {
+
+					var uniflag = document.getElementById("sel").value;
+					console.log(uniflag);
+					var remark_raw = document.getElementById("remark").value
+					console.log(remark);
+					//webvieid
+
+					var remark = toUnicode(remark_raw);
+
+					var urlsave = urlpath + '/a/pagecode/tcPagecode/saveAjax?id=' + webvieid + '&remark=' + remark + '&uniflag=' + uniflag;
+					console.log(urlsave);
+					mui.getJSON(urlsave, {}, function(data) {
+						console.log(JSON.stringify(data));
+						if('SUCCESS' == data) {
+							console.log("成功！！！");
+						}
+					});
+
 					//		if (feedback.question.value == '' ||
 					//			(feedback.contact.value != '' &&
 					//				feedback.contact.value.search(/^(\w+((-\w+)|(\.\w+))*\@[A-Za-z0-9]+((\.|-)[A-Za-z0-9]+)*\.[A-Za-z0-9]+)|([1-9]\d{4,9})$/) != 0)) {
@@ -204,7 +235,7 @@
 						if(status == 200) {
 							console.log("yyyyyyyyyyyyyyyyyyyyyyyyyy");
 							var data = JSON.parse(upload.responseText);
-							mui.toast("上传成功！");
+							mui.toast("图片上传成功！");
 							//上传成功，重置表单
 							if(data.ret === 0 && data.desc === 'Success') {
 								//					mui.toast('反馈成功~')
@@ -213,7 +244,7 @@
 							}
 
 						} else {
-							mui.toast("上传失败！");
+							mui.toast("图片上传失败！");
 							console.log("upload fail");
 						}
 						mui.back();
@@ -267,6 +298,12 @@
 					mui('.mui-popover').popover('toggle')
 				})
 			});
+
+			function toUnicode(s) {
+				return s.replace(/([\u4E00-\u9FA5]|[\uFE30-\uFFA0])/g, function(work) {
+					return "\\u" + work.charCodeAt(0).toString(16);
+				});
+			}
 		</script>
 	</body>
 
