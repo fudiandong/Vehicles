@@ -19,7 +19,8 @@
 						<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">参数名称</span>
 						<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">pagecode</span>
 						<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">参数值</span>
-						<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">一致性标记</span>
+						<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">一致性标记</span>
+						<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">图片</span>
 						<!--<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">中文品牌</span>-->
 					</li>
 				</ul>
@@ -156,7 +157,8 @@
 							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].paramname + '</span>' +
 							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].pagecode + '</span>' +
 							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + data.rDate[i].paramvalue + '</span>' +
-							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].uniflag + '</span>';
+							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + data.rDate[i].uniflag + '</span>' +
+							'<img class="mui-col-sm-1" src="'+urlpic +data.rDate[i].photo+'">';
 						li.addEventListener('tap', function() {
 							
 							mui.openWindow({
@@ -179,6 +181,15 @@
 				};
 
 			});
+			
+			
+			function getpic(picpath){
+				if(picpath){
+					return urlpic + picpath;
+				}else{
+					return "";
+				}
+			}
 			
 		</script>
 	</body>
