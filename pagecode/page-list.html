@@ -148,7 +148,7 @@
 
 				var csid = data[0];
 				var anid = data[1];
-
+				var editioncode = data[2];
 //				var csid = '994b75498f8f4401892ecc3e8584446f';
 //				var anid = 'a4e04a577d834f7888b257d239350a71';
 
@@ -168,13 +168,13 @@
 						var a = document.createElement('a');
 						if(i == 0) {
 							a.className = "mui-control-item mui-active mui-ellipsis";
-							firstwvid = data.rDate[i] + "-fudd-" + csid + "-fudd-" + anid;
+							firstwvid = data.rDate[i] + "-fudd-" + csid + "-fudd-" + anid + "-fudd-" + editioncode;
 						} else {
 							a.className = "mui-control-item mui-ellipsis";
 						}
 						a.href = "#item" + (i + 1) + "mobile";
 						console.log(a.getAttribute("href"));
-						a.id = data.rDate[i] + "-fudd-" + csid + "-fudd-" + anid;
+						a.id = data.rDate[i] + "-fudd-" + csid + "-fudd-" + anid + "-fudd-" + editioncode;
 						//						a.name = "tabname" + (i + 1);
 						a.setAttribute("style", "width: " + w + "%;");
 						a.innerHTML = data.rDate[i];

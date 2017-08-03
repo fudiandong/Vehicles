@@ -50,7 +50,7 @@
 				var pagecode = data[0];
 				var csid = data[1];
 				var anid = data[2];
-//				var wvid = data[3];
+				var editioncode = data[3];
 				console.log(pagecode);
 				
 				
@@ -85,7 +85,7 @@
 					setTimeout(function() {
 						page = 1;
 						//http://114.115.212.225:8080/jeesite/a/BaseDataCheck/Announcement/AppAnList?ANGroup=&&ANModel=SVW71612CH&pageNo=1&&pageSize=5
-						var url = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow?pagecode=' + pagecode + '&anid=' + anid+ '&csid=' + csid + '&pageNo=' + page + '&pageSize=' + pageSize;
+						var url = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow?pagecode=' + pagecode + '&anid=' + anid+ '&csid=' + csid +  '&editioncode=' + editioncode +'&pageNo=' + page + '&pageSize=' + pageSize;
 						console.log(url);
 						mui.getJSON(url, {}, function(data) {
 							console.log(JSON.stringify(data));
@@ -114,7 +114,7 @@
 //					var qmodel = document.getElementById("qmodel").value;
 //					var qgroup = document.getElementById("qgroup").value;
 					setTimeout(function() {
-						var url = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow?pagecode=' + pagecode + '&anid=' + anid+ '&csid=' + csid + '&pageNo=' + page + '&pageSize=' + pageSize;
+						var url = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow?pagecode=' + pagecode + '&anid=' + anid+ '&csid=' + csid +  '&editioncode=' + editioncode +'&pageNo=' + page + '&pageSize=' + pageSize;
 						//					var url = urlpath + '/a/BaseDataCheck/Announcement/AppAnList?pageNo=' + page + '&pageSize=' + pageSize;
 						console.log(url);
 						mui.getJSON(url, {}, function(data) {

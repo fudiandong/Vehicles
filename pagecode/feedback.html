@@ -203,16 +203,19 @@
 			if(status == 200) {
 				console.log("yyyyyyyyyyyyyyyyyyyyyyyyyy");
 				var data = JSON.parse(upload.responseText);
+				mui.toast("上传成功！");
 				//上传成功，重置表单
 				if(data.ret === 0 && data.desc === 'Success') {
 					//					mui.toast('反馈成功~')
 					console.log("upload success");
 					//					feedback.clearForm();
 				}
+				
 			} else {
+				mui.toast("上传失败！");
 				console.log("upload fail");
 			}
-
+			mui.back();
 		});
 		//添加上传数据
 //		mui.each(content, function(index, element) {
