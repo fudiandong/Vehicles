@@ -9,7 +9,7 @@
 	</head>
 
 	<body>
-		<header class="mui-bar mui-bar-nav" style="background: red;">
+		<header class="mui-bar mui-bar-nav" style="background: #4092c4;">
 			<div id="sliderSegmentedControl" class="mui-scroll-wrapper mui-slider-indicator mui-segmented-control mui-segmented-control-inverted">
 				<div id="divnav" class="mui-scroll" style="width: 100%;font-size: 16px;">
 					<!--<a class="mui-control-item mui-active" href="#item1mobile" style="width: 45%;">
@@ -26,15 +26,7 @@
 		<script type="text/javascript">
 			mui.plusReady(function() {
 				plus.screen.lockOrientation("landscape-primary", "landscape-secondary");
-				mui.init({
-					subpages: [{
-						url: 'pagecode-sub.html',
-						styles: {
-							top: '45px',
-							bottom: '0px',
-						}
-					}]
-				});
+				mui.init();
 				
 				var firstwvid;
 				var wv = plus.webview.currentWebview();

@@ -60,7 +60,8 @@
 		<script src="../js/mui.min.js"></script>
 		<script src="../js/mui.pullToRefresh.js"></script>
 		<script type="text/javascript">
-			var page = 1;
+			var page1 = 1;
+			var page2 = 1;
 			mui.plusReady(function() {
 				plus.screen.lockOrientation("landscape-primary");
 
@@ -110,8 +111,9 @@
 				function pulldownRefresh() {
 					console.log("下拉刷新");
 					setTimeout(function() {
-						page = 1;
-						var url = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow?pagecode=' + pagecode + '&anid=' + anid + '&csid=' + csid + '&editioncode=' + editioncode + '&pageNo=' + page + '&pageSize=' + pageSize;
+						page1 = 1;
+						page2 = 1;
+						var url = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow?pagecode=' + pagecode + '&anid=' + anid + '&csid=' + csid + '&editioncode=' + editioncode + '&pageNo=' + page1 + '&pageSize=' + pageSize;
 						console.log(url);
 						mui.getJSON(url, {}, function(data) {
 							console.log(JSON.stringify(data));
@@ -130,10 +132,11 @@
 							}
 							mui('#pullrefresh').pullRefresh().refresh(true);
 							mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-//							page = 2;
+							page1 = 2;
+							
 						});
 						
-						var url2 = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow2?pagecode=' + pagecode + '&anid=' + anid + '&csid=' + csid + '&editioncode=' + editioncode + '&pageNo=' + page + '&pageSize=' + pageSize;
+						var url2 = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow2?pagecode=' + pagecode + '&anid=' + anid + '&csid=' + csid + '&editioncode=' + editioncode + '&pageNo=' + page2 + '&pageSize=' + pageSize;
 						console.log(url2);
 						mui.getJSON(url2, {}, function(data) {
 							console.log(JSON.stringify(data));
@@ -152,58 +155,61 @@
 							}
 							mui('#pullrefresh').pullRefresh().refresh(true);
 							mui('#pullrefresh').pullRefresh().endPulldownToRefresh(); //refresh completed
-//							page = 2;
+							page2 = 2;
 						});
 					}, 1500);
-					page = 2;
+//					page = 2;
 				}
 				/**
 				 * 上拉加载具体业务实现
 				 */
 				function pullupRefresh() {
+					console.log("开始上拉：" + page1);
+					console.log("开始上拉：" + page2);
 					setTimeout(function() {
-						var url = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow?pagecode=' + pagecode + '&anid=' + anid + '&csid=' + csid + '&editioncode=' + editioncode + '&pageNo=' + page + '&pageSize=' + pageSize;
+						var url = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow?pagecode=' + pagecode + '&anid=' + anid + '&csid=' + csid + '&editioncode=' + editioncode + '&pageNo=' + page1 + '&pageSize=' + pageSize;
 						//					var url = urlpath + '/a/BaseDataCheck/Announcement/AppAnList?pageNo=' + page + '&pageSize=' + pageSize;
 						console.log(url);
 						mui.getJSON(url, {}, function(data) {
+							console.log(JSON.stringify(data));
 							//							var ul = document.querySelector('.mui-table-view');
 							var ul = document.getElementById("ul1");
 							var len = ul.childElementCount;
-							if(page <= data.rPageLast) {
+							console.log(page1 +"-----"+data.rPageLast);
+							if(page1 <= data.rPageLast) {
 								ul.appendChild(createFragment(ul, pageSize, data));
-								if(page == data.rPageLast) {
+								if(page1 == data.rPageLast) {
 									mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 								}
 							} else {
 								mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 							}
-//							page++;
+							page1++;
 						});
 						
-						var url2 = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow2?pagecode=' + pagecode + '&anid=' + anid + '&csid=' + csid + '&editioncode=' + editioncode + '&pageNo=' + page + '&pageSize=' + pageSize;
-						//					var url = urlpath + '/a/BaseDataCheck/Announcement/AppAnList?pageNo=' + page + '&pageSize=' + pageSize;
-						console.log(url2);
+						var url2 = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow?pagecode=' + pagecode + '&anid=' + anid + '&csid=' + csid + '&editioncode=' + editioncode + '&pageNo=' + page2 + '&pageSize=' + pageSize;
 						mui.getJSON(url2, {}, function(data) {
 							//							var ul = document.querySelector('.mui-table-view');
 							var ul2 = document.getElementById("ul2");
 							var len = ul2.childElementCount;
-							if(page <= data.rPageLast) {
-								ul.appendChild(createFragment2(ul2, pageSize, data));
-								if(page == data.rPageLast) {
+							if(page2 <= data.rPageLast) {
+								ul2.appendChild(createFragment2(ul2, pageSize, data));
+								if(page2 == data.rPageLast) {
 									mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 								}
 							} else {
 								mui('#pullrefresh').pullRefresh().endPullupToRefresh(true);
 							}
-							//page++;
+							page2++;
 						});
-						
-						page++;
 						mui('#pullrefresh').pullRefresh().endPullupToRefresh(false); //参数为true代表没有更多数据了。
+//						page++;
 					}, 1500);
+					
 				}
 
 				var createFragment = function(ul, count, data) {
+					console.log("-----");
 					var fragment = document.createDocumentFragment();
 					var li;
 					var jg, len;
@@ -217,12 +223,12 @@
 						console.log("photo=" + data.rDate[i].photo);
 						
 //						parseInt(pageSize * (page - 1) + i + 1)
-						console.log(page);
+						console.log(page1);
 						li = document.createElement('li');
 						li.id = data.rDate[i].id
 						li.className = 'mui-table-view-cell';
 						li.innerHTML =
-							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + parseInt(pageSize * (page - 1) + i + 1) + '</span>' +
+							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + parseInt(pageSize * (page1 - 1) + i + 1) + '</span>' +
 							//							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + data.rDate[i].projname + '</span>' +
 							//							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].paramcode + '</span>' +
 							'<span style="float: left;text-align: center;" class="mui-col-sm-3 mui-ellipsis">' + data.rDate[i].paramname + '</span>' +
@@ -267,7 +273,7 @@
 						li.id = data.rDate[i].id
 						li.className = 'mui-table-view-cell';
 						li.innerHTML =
-							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + parseInt(pageSize * (page - 1) + i + 1) + '</span>' +
+							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + parseInt(pageSize * (page2 - 1) + i + 1) + '</span>' +
 							//							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + data.rDate[i].projname + '</span>' +
 							//							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].paramcode + '</span>' +
 							'<span style="float: left;text-align: center;" class="mui-col-sm-3 mui-ellipsis">' + data.rDate[i].paramname + '</span>' +
