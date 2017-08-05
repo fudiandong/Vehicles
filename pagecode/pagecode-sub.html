@@ -187,7 +187,7 @@
 							page1++;
 						});
 						
-						var url2 = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow?pagecode=' + pagecode + '&anid=' + anid + '&csid=' + csid + '&editioncode=' + editioncode + '&pageNo=' + page2 + '&pageSize=' + pageSize;
+						var url2 = urlpath + '/a/configuration_rule/tcConfigurationRule/appshow2?pagecode=' + pagecode + '&anid=' + anid + '&csid=' + csid + '&editioncode=' + editioncode + '&pageNo=' + page2 + '&pageSize=' + pageSize;
 						mui.getJSON(url2, {}, function(data) {
 							//							var ul = document.querySelector('.mui-table-view');
 							var ul2 = document.getElementById("ul2");
@@ -235,8 +235,8 @@
 							//							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].pagecode + '</span>' +
 							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].paramvalue + '</span>' +
 							'<img  style="float: left;text-align: center;" class="mui-col-sm-3" src="' + urlpic + data.rDate[i].photo + '">' +
-							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + data.rDate[i].uniflag + '</span>' +
-							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].remark + '</span>';
+							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + showCoherence(data.rDate[i].uniflag) + '</span>' +
+							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + unNull(data.rDate[i].remark) + '</span>';
 						li.addEventListener('tap', function() {
 
 							mui.openWindow({
@@ -280,8 +280,8 @@
 							//							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].pagecode + '</span>' +
 							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].paramvalue + '</span>' +
 							'<img  style="float: left;text-align: center;" class="mui-col-sm-3" src="' + urlpic + data.rDate[i].photo + '">' +
-							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + data.rDate[i].uniflag + '</span>' +
-							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + data.rDate[i].remark + '</span>';
+							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + showCoherence(data.rDate[i].uniflag) + '</span>' +
+							'<span style="float: left;text-align: center;" class="mui-col-sm-2 mui-ellipsis">' + unNull(data.rDate[i].remark) + '</span>';
 						li.addEventListener('tap', function() {
 
 							mui.openWindow({
@@ -308,6 +308,24 @@
 				if(picpath) {
 					return urlpic + picpath;
 				} else {
+					return "";
+				}
+			}
+			
+			function showCoherence(str){
+				console.log("sss");
+				if(str == '1'){
+					return "是";
+				}else{
+					return "否";
+				}
+			}
+			
+			
+			function unNull(data){
+				if(data){
+					return data;
+				}else{
 					return "";
 				}
 			}
