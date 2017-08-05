@@ -243,7 +243,8 @@
 				],
 				"refer": [
 					"pagecode/page-list.html",
-					"pagecode/tab-orglive.html"
+					"pagecode/tab-orglive.html",
+					"pagecode/pagecode-main.html"
 				],
 				"priority": 0
 			},
@@ -485,7 +486,8 @@
 				],
 				"refer": [
 					"pagecode/page-details.html",
-					"pagecode/feedback.html"
+					"pagecode/feedback.html",
+					"pagecode/pagecode-sub.html"
 				],
 				"priority": 0
 			},
@@ -529,6 +531,28 @@
 					"fonts/mui.ttf",
 					"css/mui.min.css",
 					"js/feedback.js"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"pagecode/pagecode-sub.html": {
+				"resources": [
+					"fonts/mui.ttf",
+					"js/mui.pullToRefresh.js",
+					"js/mui.min.js",
+					"css/mui.min.css"
+				],
+				"refer": [
+					"pagecode/feedback.html"
+				],
+				"priority": 0
+			},
+			"pagecode/pagecode-main.html": {
+				"resources": [
+					"pagecode/pagecode-sub.html",
+					"js/mui.min.js",
+					"css/mui.min.css",
+					"fonts/mui.ttf"
 				],
 				"refer": [],
 				"priority": 0
