@@ -239,7 +239,8 @@
 					"css/mui.min.css",
 					"css/app.css",
 					"js/mui.pullToRefresh.js",
-					"fonts/mui.ttf"
+					"fonts/mui.ttf",
+					"js/mui.pullToRefresh.material.js"
 				],
 				"refer": [
 					"pagecode/page-list.html",

@@ -45,7 +45,8 @@
 			"css/app.css",
 			"compare/yz-mp.html",
 			"js/mui.pullToRefresh.js",
-			"fonts/mui.ttf"
+			"fonts/mui.ttf",
+			"js/mui.pullToRefresh.material.js"
 		],
 		"refer": [
 			"compare/yz-mp.html",

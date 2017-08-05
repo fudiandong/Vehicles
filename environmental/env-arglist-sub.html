@@ -24,7 +24,8 @@
 		    public String engineModel;//发动机型号
 			public String openTime;//公开时间-->
 				<div class="" style="width: 100%;padding-left: 25px;">
-					车辆型号：<input id="qmodel" class="mui-col-sm-3" />
+					<!--车辆型号：<input id="qmodel" class="mui-col-sm-3" />-->
+					信息公开编号：<input id="informationNum" class="mui-col-sm-2" /><span style="padding-left: 5px;">车辆型号：</span><input id="qmodel" class="mui-col-sm-2" />
 					<button id="cbtn" type="button" class="mui-btn mui-btn-primary mui-icon mui-icon-search mui-col-sm-2">
 		                                        查询
 		        	</button>
@@ -75,9 +76,10 @@
 			function pulldownRefresh() {
 				console.log("下拉刷新");
 				var veModel = document.getElementById("qmodel").value;
+				var informationNum = document.getElementById("informationNum").value;
 				setTimeout(function() {
 					page = 1;
-					var url = urlpath + '/a/BaseDataCheck/Environment/APPlist?veModel='+veModel+'&pageNo=' + page + '&pageSize=' + pageSize;
+					var url = urlpath + '/a/BaseDataCheck/Environment/APPlist?veModel='+veModel+ '&informationNum='+informationNum+'&pageNo=' + page + '&pageSize=' + pageSize;
 					console.log(url);
 					mui.getJSON(url, {}, function(data) {
 						console.log(JSON.stringify(data));
@@ -104,8 +106,9 @@
 			 */
 			function pullupRefresh() {
 				var veModel = document.getElementById("qmodel").value;
+				var informationNum = document.getElementById("informationNum").value;
 				setTimeout(function() {
-					var url = urlpath + '/a/BaseDataCheck/Environment/APPlist?veModel='+veModel+'&pageNo=' + page + '&pageSize=' + pageSize;
+					var url = urlpath + '/a/BaseDataCheck/Environment/APPlist?veModel='+veModel+ '&informationNum='+informationNum+'&pageNo=' + page + '&pageSize=' + pageSize;
 //					var url = urlpath + '/a/BaseDataCheck/Environment/APPlist?pageNo=' + page + '&pageSize=' + pageSize;
 					console.log(url);
 					mui.getJSON(url, {}, function(data) {
