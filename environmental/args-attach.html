@@ -218,7 +218,7 @@
 						var url;
 						if(self.id == '0') {
 							// 教育
-							url = urlpath + '/a/BaseDataCheck/Environment/APPenvironmentform?id=' + id + '&pageNo=' + page + '&pageSize=' + pageSize;
+							url = urlpath + '/a/BaseDataCheck/Environment/APPenvironmentform?id=' + id + '&pageNo=' + argspage + '&pageSize=' + pageSize;
 							//						url = urlpath + '/a/edu/eduCoursemanage/app_files?pageNo=' + argspage + '&pageSize=' + pageSize;
 							mui.getJSON(url, {}, function(data) {
 								var ul = self.element.querySelector('.mui-table-view');
@@ -235,7 +235,7 @@
 								argspage = 2;
 							});
 						} else if(self.id == '1') {
-							url = urlpath + '/a/BaseDataCheck/Environment/APPenvironmentScheduleform?id=' + id + '&pageNo=' + page + '&pageSize=' + pageSize;
+							url = urlpath + '/a/BaseDataCheck/Environment/APPenvironmentScheduleform?id=' + id + '&pageNo=' + attachpage + '&pageSize=' + pageSize;
 							mui.getJSON(url, {}, function(data) {
 								var ul = self.element.querySelector('.mui-table-view');
 								var len = ul.childElementCount;
