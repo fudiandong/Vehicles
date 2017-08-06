@@ -31,7 +31,6 @@
 				var firstwvid;
 				var wv = plus.webview.currentWebview();
 				var wvid = wv.id;
-				console.log(wvid);
 				var data = wvid.split("-fudd-");
 
 				var csid = data[0];
@@ -39,6 +38,7 @@
 				var editioncode = data[2];
 				
 				var listUrl = urlpath + '/a/configuration_rule/tcConfigurationRule/apppagecode?anid=' + anid + "&csid=" + csid;
+				console.log(listUrl);
 				mui.getJSON(listUrl, {}, function(data) {
 					console.log(JSON.stringify(data));
 					var len = data.rDate.length;
@@ -46,7 +46,6 @@
 					console.log(data.rDate[0]);
 					var diva = document.getElementById("divnav");
 					var w = parseInt(100 / len) - 3;
-					console.log(w);
 					for(var i = 0; i < len; i++) {
 						var a = document.createElement('a');
 						if(i == 0) {
@@ -56,9 +55,7 @@
 							a.className = "mui-control-item mui-ellipsis";
 						}
 						a.href = "#item" + (i + 1) + "mobile";
-						console.log(a.getAttribute("href"));
 						a.id = data.rDate[i] + "-fudd-" + csid + "-fudd-" + anid + "-fudd-" + editioncode;
-						//						a.name = "tabname" + (i + 1);
 						a.setAttribute("style", "width: " + w + "%;");
 						a.innerHTML = data.rDate[i];
 						a.addEventListener('tap', function() {
@@ -95,50 +92,8 @@
 							autoShow: false
 						}
 					});
-					//					var divcont = document.getElementById("divcont");
-					//					for(var i = 0; i < len; i++) {
-					//						var div = document.createElement('div');
-					//						//						div.id = "item" + (i + 1) + "mobile";
-					//						div.setAttribute("id", "item" + (i + 1) + "mobile");
-					//						var idm = div.getAttribute("id");
-					//						console.log(idm);
-					//						div.className = "mui-slider-item mui-control-content";
-					//						div.innerHTML =
-					//							'<div class="mui-scroll-wrapper">' +
-					//							'<div class="mui-scroll mui-card">' +
-					//							'<ul class="mui-table-view">' + (i + 1) +
-					//							'</ul>' +
-					//							'</div>' +
-					//							'</div>';
-					//						divcont.appendChild(div);
-					//					}
 
 				});
-				
-				
-				//初始化列表
-//				var diva = document.getElementById("divnav");
-//				var w = parseInt(100 / 5) - 3;
-//				for(var i = 0; i < 5; i++) {
-//					var a = document.createElement('a');
-//					if(i == 0) {
-//						a.className = "mui-control-item mui-active mui-ellipsis";
-//						//							firstwvid = data.rDate[i] + "-fudd-" + csid + "-fudd-" + anid + "-fudd-" + editioncode;
-//					} else {
-//						a.className = "mui-control-item mui-ellipsis";
-//					}
-//					a.href = "#item" + (i + 1) + "mobile";
-//					a.id= (i+1);
-//					//					console.log(a.getAttribute("href"));
-//					//					a.id = data.rDate[i] + "-fudd-" + csid + "-fudd-" + anid + "-fudd-" + editioncode;
-//					//						a.name = "tabname" + (i + 1);
-//					a.setAttribute("style", "width: " + w + "%;");
-//					a.innerHTML = "第" + (i + 1) + "个";
-//					a.addEventListener('tap',function(){
-//						console.log(a.getAttribute("id"));
-//					});
-//					diva.appendChild(a);
-//				}
 			});
 		</script>
 	</body>

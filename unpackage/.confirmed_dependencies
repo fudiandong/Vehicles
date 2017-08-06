@@ -225,7 +225,9 @@
 		"resources": [
 			"js/mui.pullToRefresh.js",
 			"js/mui.min.js",
-			"css/mui.min.css"
+			"css/mui.min.css",
+			"css/common.css",
+			"fonts/mui.ttf"
 		]
 	},
 	"environmental/env-arglist-main.html": {
@@ -321,7 +323,8 @@
 			"css/mui.min.css"
 		],
 		"refer": [
-			"pagecode/feedback.html"
+			"pagecode/feedback.html",
+			"pagecode/uploader.html"
 		]
 	},
 	"pagecode/pagecode-main.html": {
@@ -333,6 +336,15 @@
 		],
 		"refer": [
 			"pagecode/pagecode-sub.html"
+		]
+	},
+	"pagecode/uploader.html": {
+		"resources": [
+			"images/add.png",
+			"js/mui.min.js",
+			"css/common.css",
+			"fonts/mui.ttf",
+			"css/mui.min.css"
 		]
 	}
 }

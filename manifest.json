@@ -434,7 +434,9 @@
 				"resources": [
 					"js/mui.pullToRefresh.js",
 					"js/mui.min.js",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"css/common.css",
+					"fonts/mui.ttf"
 				],
 				"refer": [],
 				"priority": 0
@@ -544,7 +546,8 @@
 					"css/mui.min.css"
 				],
 				"refer": [
-					"pagecode/feedback.html"
+					"pagecode/feedback.html",
+					"pagecode/uploader.html"
 				],
 				"priority": 0
 			},
@@ -554,6 +557,17 @@
 					"js/mui.min.js",
 					"css/mui.min.css",
 					"fonts/mui.ttf"
+				],
+				"refer": [],
+				"priority": 0
+			},
+			"pagecode/uploader.html": {
+				"resources": [
+					"images/add.png",
+					"js/mui.min.js",
+					"css/common.css",
+					"fonts/mui.ttf",
+					"css/mui.min.css"
 				],
 				"refer": [],
 				"priority": 0

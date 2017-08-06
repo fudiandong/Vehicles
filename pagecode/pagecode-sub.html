@@ -66,11 +66,11 @@
 				plus.screen.lockOrientation("landscape-primary");
 
 				mui.back = function() {
+					console.log("back");
 					var wvs = plus.webview.all();
-
 					for(var i = 0; i < wvs.length; i++) {
 						console.log(wvs[i].id);
-						if(wvs[i].id.indexOf("-fudd-") > 0 || wvs[i].id == 'page-sub.html') {
+						if(wvs[i].id.indexOf("-fudd-") > 0 || wvs[i].id == 'pagecode-sub.html') {
 							plus.webview.getWebviewById(wvs[i].id).close();
 						}
 					}
@@ -209,7 +209,6 @@
 				}
 
 				var createFragment = function(ul, count, data) {
-					console.log("-----");
 					var fragment = document.createDocumentFragment();
 					var li;
 					var jg, len;
@@ -221,7 +220,6 @@
 
 						console.log("fbid=" + data.rDate[i].id);
 						console.log("photo=" + data.rDate[i].photo);
-						
 //						parseInt(pageSize * (page - 1) + i + 1)
 						console.log(page1);
 						li = document.createElement('li');
@@ -241,7 +239,7 @@
 
 							mui.openWindow({
 								id: this.getAttribute("id"),
-								url: 'feedback.html',
+								url: 'uploader.html',
 								styles: {
 									popGesture: 'close'
 								},
@@ -286,7 +284,7 @@
 
 							mui.openWindow({
 								id: this.getAttribute("id"),
-								url: 'feedback.html',
+								url: 'uploader.html',
 								styles: {
 									popGesture: 'close'
 								},
