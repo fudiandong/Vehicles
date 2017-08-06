@@ -223,7 +223,7 @@
 //						parseInt(pageSize * (page - 1) + i + 1)
 						console.log(page1);
 						li = document.createElement('li');
-						li.id = data.rDate[i].id
+						li.id = data.rDate[i].id+ "-fudd-" +data.rDate[i].photo;
 						li.className = 'mui-table-view-cell';
 						li.innerHTML =
 							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + parseInt(pageSize * (page1 - 1) + i + 1) + '</span>' +
@@ -268,7 +268,7 @@
 						console.log("fbid=" + data.rDate[i].id);
 						console.log("photo=" + data.rDate[i].photo);
 						li = document.createElement('li');
-						li.id = data.rDate[i].id
+						li.id = data.rDate[i].id+ "-fudd-" +data.rDate[i].photo;
 						li.className = 'mui-table-view-cell';
 						li.innerHTML =
 							'<span style="float: left;text-align: center;" class="mui-col-sm-1 mui-ellipsis">' + parseInt(pageSize * (page2 - 1) + i + 1) + '</span>' +

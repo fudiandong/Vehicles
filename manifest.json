@@ -567,7 +567,9 @@
 					"js/mui.min.js",
 					"css/common.css",
 					"fonts/mui.ttf",
-					"css/mui.min.css"
+					"css/mui.min.css",
+					"js/mui.zoom.js",
+					"js/mui.previewimage.js"
 				],
 				"refer": [],
 				"priority": 0
